@@ -1,110 +1,76 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-</head>
-<body>
+ 
+<html>
+  <head>
+    <title>Emotion To Emoji</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-<div class="container">
+    <script src="https://unpkg.com/ml5@0.4.3/dist/ml5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.js"></script>
 
-    <section id="app">
-        <h1>Apps</h1>
-        <div class="line"></div>
-        <iframe width="400" height="620" style="border: 0px;" src="https://studio.code.org/projects/applab/AmAIOlod-80aGvVFcBdbfjebPGUlVaYjI8ECZcJtZks/embed"></iframe>
-        <iframe width="400" height="620" style="border: 0px;" src="https://studio.code.org/projects/applab/U9AQsuLnTixFr5caYUBM9qmkuaPCvmuWblFMcUPrC14/embed"></iframe>
-    </section>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
 
+  <body>
+  <div class="container">
+  
+    <center>
+      <h3 class="btn btn-info heading">Emotion-to-Emoji App
+        <br>
+        <span>&#128522;</span>
+        <span>&#128512;</span>
+        <span>&#128532;</span>
+        <span>&#128546;</span>
+        <span>&#128545;</span>
+        <span>&#128548;</span>
+      </h3>
 
+      <br><br>
 
-<h2>Click On The Games To Explore</h2>
+      <p style="font-size: 22px;">Take your selfie to generate emoji
+      	<br>
+        <b style="color: rgb(255, 166, 0)">Are you Happy?</b>
+        <br>
+        <b style="color: rgb(139, 203, 245)">Are you Sad?</b>
+        <br>
+        <b style="color: rgb(244, 111, 111)">Are you Angry?</b>
+        <br>
+      </p>
 
-<h5>This games are bulid in game lab, click on the game to play</h5>
+      <div class="col-md-4 col-sm-12 col-xs-12">
+        <label>Webcam View - </label>
+        <div id="camera"></div>
+        <br><br>
+        <button onclick="take_snapshot();" class="btn btn-primary">Capture Image</button>
+        </div>
+        <div class="col-md-4 col-sm-12 col-xs-12">
+        <label>Prediction 1 - </label>
+        <p class="emotion_name" id="result_emotion_name"></p>
+        <p class="emoji" id="update-emoji"></p>
 
-<div id="myCarousel" class="carousel slide" >
+        <label>Prediction 2 - </label>
+        <p class="emotion_name" id="result_emotion_name2"></p>
+        <p class="emoji" id="update_emoji2"></p>
+        <br><br>
+        </div>
+        <div class="col-md-4 col-sm-12 col-xs-12">
+          <label>Snapshot - </label>
+          <div id="results"></div>
+          <br><br>
+          <button onclick="check();" class="btn btn-success">Predict Emotion</button>
+        </div>
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-      <div class="item active">
-        <center>
-        <a href="#" target="_blank">
-          <img src="Winne_Pooh.png" class="img-responsive">
-        </a>
-          <div class="carousel-content">
-            <p>Winne_Pooh</p>
-          </div>
-        </center>
-      </div>
+      
 
-      <div class="item">
-        <center>
-        <a href="#" target="_blank">
-          <img src="Car_game.png" class="img-responsive">
-        </a>
-          <div class="carousel-content">
-            <p>Car_game</p>
-          </div>
-        </center>
-      </div>
-    
-    </div>
+    </center>
 
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right"></span>
-    </a>
   </div>
 
+<script src="main.js"></script>
 
-
-    <h2>Click On The Play Store Apps To Explore</h2>
-    <h5>This games are bulid in play lab, click on the app to view</h5>
-  <div id="myCarouse2" class="carousel slide">
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-      <div class="item active">
-        <center>
-        <a href="#" target="_blank">
-          <img src="chat_app.png" class="img-responsive">
-        </a>
-          <div class="carousel-content">
-            <p>Chat app</p>
-          </div>
-        </center>
-      </div>
-
-      <div class="item">
-        <center>
-        <a href="#" target="_blank">
-          <img src="be_fit_img.png" class="img-responsive">
-        </a>
-          <div class="carousel-content">
-            <p>Be Fit Not Fat</p>
-          </div>
-        </center>
-      </div>
-    
-    </div>
-
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarouse2" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-    </a>
-    <a class="right carousel-control" href="#myCarouse2" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right"></span>
-    </a>
-  </div>
-
-
-</div>
-
-</body>
+  </body>
 </html>
+
+ 
